@@ -30,7 +30,7 @@ class OverlayShape extends StatelessWidget {
                   color: Colors.transparent,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(radius),
-                      side: const BorderSide(width: 1, color: Colors.white))),
+                      side: const BorderSide(width: 4, color: Color(0xFF717171)))),
             )),
         ColorFiltered(
           colorFilter: const ColorFilter.mode(Colors.black54, BlendMode.srcOut),
