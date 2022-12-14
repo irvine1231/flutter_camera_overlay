@@ -43,7 +43,7 @@ class _FlutterCameraOverlayState extends State<CameraOverlay> {
   @override
   void initState() {
     super.initState();
-    controller = CameraController(widget.camera, ResolutionPreset.max);
+    controller = CameraController(widget.camera, ResolutionPreset.max, enableAudio: false,);
     controller.initialize().then((_) {
       if (!mounted) {
         return;
