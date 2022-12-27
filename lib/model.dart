@@ -11,8 +11,12 @@ enum OverlayFormat {
   cardID3,
 
   ///SIM cards
-  simID000
+  simID000,
+
+  // TW Household Registration
+  householdRegistration,
 }
+
 enum OverlayOrientation { landscape, portrait }
 
 abstract class OverlayModel {
@@ -27,10 +31,7 @@ abstract class OverlayModel {
 }
 
 class CardOverlay implements OverlayModel {
-  CardOverlay(
-      {this.ratio = 1.5,
-      this.cornerRadius = 0.66,
-      this.orientation = OverlayOrientation.landscape});
+  CardOverlay({this.ratio = 1.5, this.cornerRadius = 0.66, this.orientation = OverlayOrientation.landscape});
 
   @override
   double? ratio;
@@ -49,6 +50,8 @@ class CardOverlay implements OverlayModel {
         return CardOverlay(ratio: 1.42, cornerRadius: 0.057);
       case (OverlayFormat.simID000):
         return CardOverlay(ratio: 1.66, cornerRadius: 0.073);
+      case (OverlayFormat.householdRegistration):
+        return CardOverlay(ratio: 5, cornerRadius: 0.073);
     }
   }
 }
