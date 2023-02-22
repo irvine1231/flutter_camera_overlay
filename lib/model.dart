@@ -13,8 +13,11 @@ enum OverlayFormat {
   ///SIM cards
   simID000,
 
-  // TW Household Registration
+  // TW Household Registration from 25cm high
   householdRegistration,
+
+  // TW Card ID from 25cm high
+  cardID4,
 }
 
 enum OverlayOrientation { landscape, portrait }
@@ -26,17 +29,27 @@ abstract class OverlayModel {
   ///ratio between maximum allowable radius and maximum allowable length of shortest side
   double? cornerRadius;
 
+  ///ratio between maximum allowable radius and maximum allowable length of shortest side
+  double? widthTimes;
+
   ///natural orientation for overlay
   OverlayOrientation? orientation;
 }
 
 class CardOverlay implements OverlayModel {
-  CardOverlay({this.ratio = 1.5, this.cornerRadius = 0.66, this.orientation = OverlayOrientation.landscape});
+  CardOverlay({
+    this.ratio = 1.5,
+    this.cornerRadius = 0.66,
+    this.widthTimes,
+    this.orientation = OverlayOrientation.landscape,
+  });
 
   @override
   double? ratio;
   @override
   double? cornerRadius;
+  @override
+  double? widthTimes;
   @override
   OverlayOrientation? orientation;
 
@@ -52,6 +65,8 @@ class CardOverlay implements OverlayModel {
         return CardOverlay(ratio: 1.66, cornerRadius: 0.073);
       case (OverlayFormat.householdRegistration):
         return CardOverlay(ratio: 5, cornerRadius: 0.073);
+      case (OverlayFormat.cardID4):
+        return CardOverlay(ratio: 1.59, cornerRadius: 0.064, widthTimes: .54);
     }
   }
 }

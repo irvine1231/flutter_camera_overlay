@@ -8,17 +8,21 @@ class OverlayShape extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late double width;
     var media = MediaQuery.of(context);
     var size = media.size;
-    double width = media.orientation == Orientation.portrait
-        ? size.shortestSide * .9
-        : size.longestSide * .5;
+    if (model.widthTimes == null) {
+      width = media.orientation == Orientation.portrait ? size.shortestSide * .9 : size.longestSide * .5;
+    } else {
+      width = media.orientation == Orientation.portrait
+          ? size.shortestSide * model.widthTimes!
+          : size.longestSide * model.widthTimes!;
+    }
 
     double ratio = model.ratio as double;
     double height = width / ratio;
-    double radius =
-        model.cornerRadius == null ? 0 : model.cornerRadius! * height;
-    if (media.orientation == Orientation.portrait) {}
+    double radius = model.cornerRadius == null ? 0 : model.cornerRadius! * height;
+
     return Stack(
       children: [
         Align(
@@ -45,9 +49,7 @@ class OverlayShape extends StatelessWidget {
                   child: Container(
                     width: width,
                     height: width / ratio,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(radius)),
+                    decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(radius)),
                   ),
                 ),
               ),
