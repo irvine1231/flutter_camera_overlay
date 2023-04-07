@@ -69,7 +69,7 @@ class CardOverlay implements OverlayModel {
       case (OverlayFormat.householdRegistration):
         return CardOverlay(ratio: 0.1, cornerRadius: 0.073, widthTimes: .2);
       case (OverlayFormat.cardID4):
-        return CardOverlay(ratio: 1.59, cornerRadius: 0.064, widthTimes: .815);
+        return CardOverlay(ratio: 1.59, cornerRadius: 0.064, widthTimes: .83);
       case (OverlayFormat.photo):
         return CardOverlay(ratio: 0.7, cornerRadius: 0.064, widthTimes: .27);
     }
