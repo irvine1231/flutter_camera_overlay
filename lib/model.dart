@@ -21,6 +21,9 @@ enum OverlayFormat {
 
   // 2 inch photo
   photo,
+
+  // Delegation form (委任書) - A4 portrait proportion
+  delegationForm,
 }
 
 enum OverlayOrientation { landscape, portrait }
@@ -72,6 +75,8 @@ class CardOverlay implements OverlayModel {
         return CardOverlay(ratio: 1.59, cornerRadius: 0.064, widthTimes: .83);
       case (OverlayFormat.photo):
         return CardOverlay(ratio: 0.7, cornerRadius: 0.064, widthTimes: .27);
+      case (OverlayFormat.delegationForm):
+        return CardOverlay(ratio: 0.707, cornerRadius: 0.01, widthTimes: .9);
     }
   }
 }
